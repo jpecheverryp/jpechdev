@@ -1,26 +1,45 @@
 {{block "index" .}}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Juan P Echeverry Portfolio</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>Juan P Echeverry</h1>
-        <p>Hello! Welcome to my little corner on the internet</p>
-        <p>Find me at:</p>
-        <ul>
-            <li><a href="https://github.com/jpecheverryp" target="_blank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/jpechdev/" target="_blank">LinkedIn</a></li>
-        </ul>
-        <h2>Projects</h2>
-        <h3>To-Do App</h3>
-        <p>The purpose of this app is to just have something deployed while I create a more interesting project</p>
-        <ul>
-            <li><a href="https://github.com/jpecheverryp/todojpechdev" target="_blank">GitHub Repo</a></li>
-            <li><a href="https://todo.jpech.dev/" target="_blank">Live Site</a></li>
-        </ul>
-    </body>
+
+<head>
+    <title>Juan P Echeverry Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+    <main class="container">
+        <hgroup>
+            <h1>Juan P Echeverry</h1>
+            <p>Hello! Welcome to my little corner on the internet</p>
+        </hgroup>
+        <section>
+            <h2>Find me at:</h2>
+            <ul>
+                <li><a href="https://github.com/jpecheverryp" target="_blank">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/jpechdev/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <article>
+                <hgroup>
+                    <h3>Todo App</h3>
+                    <p>To do application made with Golang and HTMX</p>
+                </hgroup>
+                <nav>
+                    <ul>
+                        <li><a href="https://github.com/jpecheverryp/todojpechdev" target="_blank">GitHub Repo</a></li>
+                        <li><a href="https://todo.jpech.dev/" target="_blank">Live Site</a></li>
+                    </ul>
+                </nav>
+                <img src="static/todoapp-screen.png" alt="Todo app desktop view">
+            </article>
+        </section>
+    </main>
+</body>
+
 </html>
 {{end}}

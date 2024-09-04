@@ -31,6 +31,9 @@ func main() {
 	port := ":5173"
 	mux := http.NewServeMux()
 
+    fileServer := http.FileServer(http.Dir("./static/"))
+    mux.Handle("GET /static/", http.StripPrefix("/static", fileServer))
+
 	mux.HandleFunc("/", getIndex)
 
 	log.Printf("starting server in port %s", port)
