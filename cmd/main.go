@@ -1,40 +1,86 @@
 package main
 
 import (
+	"fmt"
+	"io/fs"
 	"log"
 	"net/http"
+	"path/filepath"
 	"text/template"
+
+	"jpech.dev/views"
 )
 
-func getIndex(w http.ResponseWriter, r *http.Request) {
-	files := []string{
-		"./views/index.html",
+func (app *application) getIndex(w http.ResponseWriter, r *http.Request) {
+	app.render(w, http.StatusOK, "index.html")
+}
+
+func newTemplateCache() (map[string]*template.Template, error) {
+	cache := map[string]*template.Template{}
+
+	pages, err := fs.Glob(views.Files, "html/pages/*.html")
+	if err != nil {
+		return nil, err
 	}
 
-	ts, err := template.ParseFiles(files...)
+	for _, page := range pages {
+		name := filepath.Base(page)
 
-	if err != nil {
-        log.Print(err)
+		patterns := []string{
+			"html/layout.html",
+			page,
+		}
+
+		ts, err := template.New(name).ParseFS(views.Files, patterns...)
+		if err != nil {
+			return nil, err
+		}
+
+		cache[name] = ts
+	}
+
+	return cache, nil
+}
+
+func (app *application) render(w http.ResponseWriter, status int, page string) {
+	ts, ok := app.templateCache[page]
+	if !ok {
+		err := fmt.Errorf("the template %s does not exist", page)
+		log.Print(err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
-	err = ts.ExecuteTemplate(w, "index", nil)
+	w.WriteHeader(status)
+
+	err := ts.ExecuteTemplate(w, "layout", nil)
 	if err != nil {
-        log.Print(err)
+
+		log.Print(err)
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
 	}
+}
+
+type application struct {
+	templateCache map[string]*template.Template
 }
 
 func main() {
 	port := ":5173"
+
 	mux := http.NewServeMux()
 
-    fileServer := http.FileServer(http.Dir("./static/"))
-    mux.Handle("GET /static/", http.StripPrefix("/static", fileServer))
+	templateCache, err := newTemplateCache()
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	mux.HandleFunc("/", getIndex)
+	app := &application{
+		templateCache: templateCache,
+	}
+
+	mux.HandleFunc("GET /", app.getIndex)
+	mux.Handle("GET /static/", http.FileServerFS(views.Files))
 
 	log.Printf("starting server in port %s", port)
 	log.Fatal(http.ListenAndServe(port, mux))
