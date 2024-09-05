@@ -1,27 +1,36 @@
 package main
 
 import (
-	"log"
-	"net/http"
 	"html/template"
+	"log/slog"
+	"net/http"
+	"os"
 )
 
+
 type application struct {
+    logger *slog.Logger
 	templateCache map[string]*template.Template
 }
 
 func main() {
 	port := ":5173"
 
+    logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
+
 	templateCache, err := newTemplateCache()
 	if err != nil {
-		log.Fatal(err)
+        logger.Error(err.Error())
+        os.Exit(1)
 	}
 
 	app := &application{
+        logger: logger,
 		templateCache: templateCache,
 	}
 
-	log.Printf("starting server in port %s", port)
-	log.Fatal(http.ListenAndServe(port, app.routes()))
+    logger.Info("starting server", "port", port)
+    err = http.ListenAndServe(port, app.routes())
+    logger.Error(err.Error())
+    os.Exit(1)
 }
