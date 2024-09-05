@@ -1,65 +1,10 @@
 package main
 
 import (
-	"fmt"
-	"io/fs"
 	"log"
 	"net/http"
-	"path/filepath"
-	"text/template"
-
-	"jpech.dev/views"
+	"html/template"
 )
-
-func (app *application) getIndex(w http.ResponseWriter, r *http.Request) {
-	app.render(w, http.StatusOK, "index.html")
-}
-
-func newTemplateCache() (map[string]*template.Template, error) {
-	cache := map[string]*template.Template{}
-
-	pages, err := fs.Glob(views.Files, "html/pages/*.html")
-	if err != nil {
-		return nil, err
-	}
-
-	for _, page := range pages {
-		name := filepath.Base(page)
-
-		patterns := []string{
-			"html/layout.html",
-			page,
-		}
-
-		ts, err := template.New(name).ParseFS(views.Files, patterns...)
-		if err != nil {
-			return nil, err
-		}
-
-		cache[name] = ts
-	}
-
-	return cache, nil
-}
-
-func (app *application) render(w http.ResponseWriter, status int, page string) {
-	ts, ok := app.templateCache[page]
-	if !ok {
-		err := fmt.Errorf("the template %s does not exist", page)
-		log.Print(err)
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
-	}
-
-	w.WriteHeader(status)
-
-	err := ts.ExecuteTemplate(w, "layout", nil)
-	if err != nil {
-
-		log.Print(err)
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-	}
-}
 
 type application struct {
 	templateCache map[string]*template.Template
@@ -67,8 +12,6 @@ type application struct {
 
 func main() {
 	port := ":5173"
-
-	mux := http.NewServeMux()
 
 	templateCache, err := newTemplateCache()
 	if err != nil {
@@ -79,9 +22,6 @@ func main() {
 		templateCache: templateCache,
 	}
 
-	mux.HandleFunc("GET /", app.getIndex)
-	mux.Handle("GET /static/", http.FileServerFS(views.Files))
-
 	log.Printf("starting server in port %s", port)
-	log.Fatal(http.ListenAndServe(port, mux))
+	log.Fatal(http.ListenAndServe(port, app.routes()))
 }
