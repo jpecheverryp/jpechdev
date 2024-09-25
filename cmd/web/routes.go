@@ -12,5 +12,5 @@ func (app *application) routes() *http.ServeMux {
 
 	mux.HandleFunc("GET /", app.getIndex)
 
-    return mux
+	return mux
 }

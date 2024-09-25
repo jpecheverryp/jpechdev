@@ -41,7 +41,7 @@ func (app *application) render(w http.ResponseWriter, status int, page string) {
 	ts, ok := app.templateCache[page]
 	if !ok {
 		err := fmt.Errorf("the template %s does not exist", page)
-        app.logger.Error(err.Error())
+		app.logger.Error(err.Error())
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
@@ -50,7 +50,7 @@ func (app *application) render(w http.ResponseWriter, status int, page string) {
 
 	err := ts.ExecuteTemplate(w, "layout", nil)
 	if err != nil {
-        app.logger.Error(err.Error())
+		app.logger.Error(err.Error())
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 	}
 }
