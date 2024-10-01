@@ -18,10 +18,10 @@ func main() {
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
 
 	templateCache, err := newTemplateCache()
-	//if err != nil {
-		//logger.Error(err.Error())
-		//os.Exit(1)
-	//}
+	if err != nil {
+		logger.Error(err.Error())
+		os.Exit(1)
+	}
 
 	app := &application{
 		logger:        logger,
