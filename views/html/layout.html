@@ -12,19 +12,25 @@
 <body class="container">
     <nav>
         <ul>
-            <li><a href="/"><h1>Juan P Echeverry</h1><a/></li>
+            <li><a href="/">
+                    <h1>Juan P Echeverry</h1><a /></li>
         </ul>
         <ul>
             <li><a href="/about">About</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/links">Links</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
     <main>
         {{template "page" .}}
     </main>
-    <footer>
-        <p>This is an <a href="https://github.com/jpecheverryp/jpechdev">Open Source</a> Portfolio</p>
+    <footer class="grid">
+        <div>
+            <p style="text-align: center; display: block;">&copy; 2025 / Juan P Echeverry</p>
+        </div>
+        <div>
+            <a style="text-align: center; display: block;" href="https://github.com/jpecheverryp/jpechdev">View
+                source</a>
+        </div>
     </footer>
 </body>
 
