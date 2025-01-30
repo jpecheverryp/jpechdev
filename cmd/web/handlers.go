@@ -11,7 +11,7 @@ func (app *application) getProjects(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) getAbout(w http.ResponseWriter, r *http.Request) {
-    app.render(w, http.StatusOK, "index.html")
+    app.render(w, http.StatusOK, "about.html")
 }
 
 func (app *application) getContact(w http.ResponseWriter, r *http.Request) {
