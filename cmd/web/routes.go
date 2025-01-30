@@ -11,9 +11,9 @@ func (app *application) routes() *http.ServeMux {
 	mux.Handle("GET /static/", http.FileServerFS(views.Files))
 
 	mux.HandleFunc("GET /", app.getIndex)
-    mux.HandleFunc("GET /about", app.getAbout)
-    mux.HandleFunc("GET /projects", app.getProjects)
-    mux.HandleFunc("GET /contact", app.getContact)
+	mux.HandleFunc("GET /about", app.getAbout)
+	mux.HandleFunc("GET /projects", app.getProjects)
+	mux.HandleFunc("GET /contact", app.getContact)
 
 	return mux
 }
