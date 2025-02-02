@@ -1,5 +1,6 @@
 services:
-  go-app:
-    build: .
+  web:
+    image: ghcr.io/jpecheverryp/jpechdev:latest
     ports:
       - "5173:5173"
+    restart: always
