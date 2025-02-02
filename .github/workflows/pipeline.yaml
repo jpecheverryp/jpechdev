@@ -39,6 +39,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: 
+          tags: |
             ghcr.io/jpecheverryp/jpechdev:latest
             ghcr.io/jpecheverryp/jpechdev:${{ github.sha }}
