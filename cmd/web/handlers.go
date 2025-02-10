@@ -17,3 +17,11 @@ func (app *application) getAbout(w http.ResponseWriter, r *http.Request) {
 func (app *application) getContact(w http.ResponseWriter, r *http.Request) {
 	app.render(w, http.StatusOK, "contact.html")
 }
+
+func (app *application) getGitHub(w http.ResponseWriter, r *http.Request) {
+    http.Redirect(w, r, "https://github.com/jpecheverryp", http.StatusSeeOther)
+}
+
+func (app *application) getLinkedIn(w http.ResponseWriter, r *http.Request) {
+    http.Redirect(w, r, "https://www.linkedin.com/in/jpechdev/", http.StatusSeeOther)
+}
