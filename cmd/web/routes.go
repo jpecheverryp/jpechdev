@@ -16,8 +16,8 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /about", app.getAbout)
 	mux.HandleFunc("GET /projects", app.getProjects)
 	mux.HandleFunc("GET /contact", app.getContact)
-    mux.HandleFunc("GET /github", app.getGitHub)
-    mux.HandleFunc("GET /linkedin", app.getLinkedIn)
+	mux.HandleFunc("GET /github", app.getGitHub)
+	mux.HandleFunc("GET /linkedin", app.getLinkedIn)
 
 	standard := alice.New(app.logRequest)
 
