@@ -62,7 +62,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/jpecheverryp/jpechdev:latest
-            ghcr.io/jpecheverryp/jpechdev:${{ need.commit-hash.outputs.commit_hash }}
+            ghcr.io/jpecheverryp/jpechdev:${{ needs.commit-hash.outputs.commit_hash }}
 
   deploy:
     runs-on: ubuntu-latest
