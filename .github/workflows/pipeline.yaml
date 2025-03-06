@@ -54,15 +54,15 @@ jobs:
       - build-and-push-image
 
     steps:
-      -name: Checkout code
-      uses: actions/checkout@v2
-      -name: 'Docker Stack deploy'
-      uses: cssnr/stack-deploy-action@v1
-      with:
-        name: 'jpechdev'
-        file: 'docker-stack.yaml'
-        host: jpech.dev
-        user: jpech
-        ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: 'Docker Stack deploy'
+        uses: cssnr/stack-deploy-action@v1
+        with:
+          name: 'jpechdev'
+          file: 'docker-stack.yaml'
+          host: jpech.dev
+          user: jpech
+          ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
 
 
