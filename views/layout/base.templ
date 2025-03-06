@@ -1,53 +1,50 @@
 package layout
 
 templ Base() {
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-
-<head>
-    <title>Juan P Echeverry - Software Developer</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css" />
-    <script src="https://kit.fontawesome.com/18a9386424.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico" />
-</head>
-
-<body class="container" style="max-width: 800px; padding: 0 20px;">
-    <nav>
-        <ul style="font-weight: bold;">
-            <li><a href="/">Juan P</a></li>
-        </ul>
-        <ul style="font-weight: bold;">
-            <li>
-                <a href="https://github.com/jpecheverryp/jpechdev" target="_blank">
-                    <i class="fa-brands fa-github"></i>
-                    Source
-                </a>
-            </li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        { children... }
-    </main>
-    <footer style="text-align: center;">
-        <p>&copy; 2025 Juan P Echeverry. All Rights Reserved.</p>
-        <nav style="display: block; margin: 0 auto;">
-            <ul style="display: block; margin: 0 auto; height: fit-content;">
-                <li style="padding: 0 0.5rem;">
-                    <a href="/github" target="_blank"><i class="fa-brands fa-github"></i></a>
-                </li>
-                <li style="padding: 0 0.5rem;">
-                    <a href="/linkedin" target="_blank">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </footer>
-</body>
-
-</html>
+	<!DOCTYPE html>
+	<html lang="en" data-theme="light">
+		<head>
+			<title>Juan P Echeverry - Software Developer</title>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.cyan.min.css"/>
+			<script src="https://kit.fontawesome.com/18a9386424.js" crossorigin="anonymous"></script>
+			<link rel="icon" type="image/x-icon" href="/static/images/favicon.ico"/>
+		</head>
+		<body class="container" style="max-width: 800px; padding: 0 20px;">
+			<nav>
+				<ul style="font-weight: bold;">
+					<li><a href="/">Juan P</a></li>
+				</ul>
+				<ul style="font-weight: bold;">
+					<li>
+						<a href="https://github.com/jpecheverryp/jpechdev" target="_blank">
+							<i class="fa-brands fa-github"></i>
+							Source
+						</a>
+					</li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</nav>
+			<main>
+				{ children... }
+			</main>
+			<footer style="text-align: center;">
+				<p>&copy; 2025 Juan P Echeverry. All Rights Reserved.</p>
+				<nav style="display: block; margin: 0 auto;">
+					<ul style="display: block; margin: 0 auto; height: fit-content;">
+						<li style="padding: 0 0.5rem;">
+							<a href="/github" target="_blank"><i class="fa-brands fa-github"></i></a>
+						</li>
+						<li style="padding: 0 0.5rem;">
+							<a href="/linkedin" target="_blank">
+								<i class="fa-brands fa-linkedin"></i>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</footer>
+		</body>
+	</html>
 }
