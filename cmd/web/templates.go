@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"path/filepath"
 
+	"github.com/a-h/templ"
 	"jpech.dev/views"
 )
 
@@ -35,6 +36,15 @@ func newTemplateCache() (map[string]*template.Template, error) {
 	}
 
 	return cache, nil
+}
+
+func (app *application) renderTempl(w http.ResponseWriter, r *http.Request, status int, component templ.Component) {
+	w.WriteHeader(status)
+	err := templ.Component.Render(component, r.Context(), w)
+	if err != nil {
+		app.logger.Error(err.Error())
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+	}
 }
 
 func (app *application) render(w http.ResponseWriter, status int, page string) {

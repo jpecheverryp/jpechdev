@@ -9,4 +9,4 @@ audit:
 ## dev: run application in developent mode
 .PHONY: dev
 dev:
-	air
+	templ generate --watch --cmd="go run ./cmd/web/"

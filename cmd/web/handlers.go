@@ -1,21 +1,25 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+
+	"jpech.dev/views/page"
+)
 
 func (app *application) getIndex(w http.ResponseWriter, r *http.Request) {
-	app.render(w, http.StatusOK, "index.html")
+	app.renderTempl(w, r, http.StatusOK, page.Index())
 }
 
 func (app *application) getProjects(w http.ResponseWriter, r *http.Request) {
-	app.render(w, http.StatusOK, "index.html")
+	app.renderTempl(w, r, http.StatusOK, page.Index())
 }
 
 func (app *application) getAbout(w http.ResponseWriter, r *http.Request) {
-	app.render(w, http.StatusOK, "about.html")
+	app.renderTempl(w, r, http.StatusOK, page.About())
 }
 
 func (app *application) getContact(w http.ResponseWriter, r *http.Request) {
-	app.render(w, http.StatusOK, "contact.html")
+	app.renderTempl(w, r, http.StatusOK, page.Contact())
 }
 
 func (app *application) getGitHub(w http.ResponseWriter, r *http.Request) {

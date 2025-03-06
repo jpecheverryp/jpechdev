@@ -1,0 +1,42 @@
+package page
+
+import "jpech.dev/views/layout"
+
+templ Index() {
+	@layout.Base() {
+		<section>
+			<h1>Howdy, Im Juan!!</h1>
+			<p>Welcome to my little corner on the internet!</p>
+		</section>
+		<section>
+			<h2>Find me on:</h2>
+			<ul>
+				<li><a href="/github" target="_blank">GitHub</a></li>
+				<li><a href="/linkedin" target="_blank">LinkedIn</a></li>
+			</ul>
+		</section>
+		<section id="projects">
+			<h2>Dev Projects</h2>
+			<article>
+				<hgroup>
+					<h3>To-do App</h3>
+					<p>This is a placeholder for better projects to come</p>
+				</hgroup>
+				<nav>
+					<ul>
+						<li><a role="button" class="primary" href="https://todo.jpech.dev/" target="_blank">Live Site</a></li>
+						<li>
+							<a
+								role="button"
+								class="outline"
+								href="https://github.com/jpecheverryp/todojpechdev"
+								target="_blank"
+							>GitHub Repo</a>
+						</li>
+					</ul>
+				</nav>
+				<img src="static/images/todoapp-screen.png" alt="Todo app desktop view"/>
+			</article>
+		</section>
+	}
+}
