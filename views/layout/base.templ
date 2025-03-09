@@ -1,5 +1,7 @@
 package layout
 
+import "jpech.dev/views/partial"
+
 templ Base() {
 	<!DOCTYPE html>
 	<html lang="en" data-theme="light">
@@ -12,39 +14,11 @@ templ Base() {
 			<link rel="icon" type="image/x-icon" href="/static/images/favicon.ico"/>
 		</head>
 		<body class="container" style="max-width: 800px; padding: 0 20px;">
-			<nav>
-				<ul style="font-weight: bold;">
-					<li><a href="/">Juan P</a></li>
-				</ul>
-				<ul style="font-weight: bold;">
-					<li>
-						<a href="https://github.com/jpecheverryp/jpechdev" target="_blank">
-							<i class="fa-brands fa-github"></i>
-							Source
-						</a>
-					</li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/contact">Contact</a></li>
-				</ul>
-			</nav>
+			@partial.Nav()
 			<main>
 				{ children... }
 			</main>
-			<footer style="text-align: center;">
-				<p>&copy; 2025 Juan P Echeverry. All Rights Reserved.</p>
-				<nav style="display: block; margin: 0 auto;">
-					<ul style="display: block; margin: 0 auto; height: fit-content;">
-						<li style="padding: 0 0.5rem;">
-							<a href="/github" target="_blank"><i class="fa-brands fa-github"></i></a>
-						</li>
-						<li style="padding: 0 0.5rem;">
-							<a href="/linkedin" target="_blank">
-								<i class="fa-brands fa-linkedin"></i>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</footer>
+			@partial.Footer()
 		</body>
 	</html>
 }
