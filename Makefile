@@ -11,3 +11,6 @@ audit:
 .PHONY: dev
 dev:
 	templ generate --watch --cmd="go run ./cmd/web/"
+
+prod:
+	docker compose -f ./compose.yml -f ./prod-compose.yaml up

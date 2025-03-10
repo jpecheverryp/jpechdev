@@ -1,0 +1,8 @@
+services:
+  app:
+    image: ghcr.io/jpecheverryp/jpechdev:latest
+    command: !reset []
+    volumes: !reset []
+    ports:
+      - "5173:5173"
+    restart: always
