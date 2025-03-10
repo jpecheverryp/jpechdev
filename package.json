@@ -1,0 +1,25 @@
+{
+  "name": "jpechdev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+      "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./views/static/css/tailwind.css -w",
+      "build": "npx @tailwindcss/cli -i ./src/input.css -o ./views/static/css/tailwind.css -m"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpecheverryp/jpechdev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpecheverryp/jpechdev/issues"
+  },
+  "homepage": "https://github.com/jpecheverryp/jpechdev#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.12",
+    "tailwindcss": "^4.0.12"
+  }
+}
